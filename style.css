@@ -1,3 +1,5 @@
 body {
-  background: pink;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: linear-gradient(135deg, #e0f2f1, #e3f2fd);
 }
