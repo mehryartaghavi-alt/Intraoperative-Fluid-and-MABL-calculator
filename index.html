@@ -1,13 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>TEST</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intraoperative Fluid Calculator & MABL</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-  <body>
-  <h1>HELLO FROM NEW REPO</h1>
-    <script src="script.js"></script>
+
+<body>
+
+  <div class="app">
+    <h1>Intraoperative Fluid Calculator & MABL</h1>
+    <p class="subtitle">Mehryar Taghavi, MD – Anesthesiology</p>
+
+    <label>Weight (kg)</label>
+    <input type="number" id="weight" />
+
+    <label>Sex</label>
+    <select id="sex">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <label>Surgical Severity</label>
+    <select id="severity">
+      <option value="minimal">Minimal</option>
+      <option value="mild">Mild</option>
+      <option value="moderate">Moderate</option>
+      <option value="severe">Severe</option>
+    </select>
+
+    <button id="calcBtn">Calculate</button>
+
+    <div id="results"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
