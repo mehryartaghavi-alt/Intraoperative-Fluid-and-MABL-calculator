@@ -1,3 +1,3 @@
-document.querySelector("button").addEventListener("click", () => {
-  alert("JavaScript is working ✅");
-});
+alert("JS connected successfully");
+
+
