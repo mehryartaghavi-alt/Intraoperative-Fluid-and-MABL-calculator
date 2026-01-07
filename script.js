@@ -1,3 +1,4 @@
-alert("JS connected successfully");
+
+
 
 
