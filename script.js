@@ -22,9 +22,9 @@ document.getElementById("calcBtn").addEventListener("click", () => {
 
   const base = rate * weight;
 
-  const hour1 = base + b1;
-  const hour2 = base + b1 + b2;
-  const hour3 = base + b2 + b3;
+  const hour1 = base;
+  const hour2 = base + b1;
+  const hour3 = base + b2;
   const hour4 = base + b3;
 
   document.getElementById("results").innerHTML = `
@@ -35,3 +35,4 @@ document.getElementById("calcBtn").addEventListener("click", () => {
     <p>Hour 4: ${hour4.toFixed(0)} ml</p>
   `;
 });
+
