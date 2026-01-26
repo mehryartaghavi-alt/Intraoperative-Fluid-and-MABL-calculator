@@ -1,6 +1,8 @@
 document.getElementById("calcBtn").addEventListener("click", () => {
   const weight = Number(document.getElementById("weight").value);
   const severity = document.getElementById("severity").value;
+  const age = Number(document.getElementById("age").value);
+  const npo = Number(document.getElementById("npo").value);
 
   const b1 = Number(document.getElementById("bleed1").value) || 0;
   const b2 = Number(document.getElementById("bleed2").value) || 0;
@@ -12,27 +14,71 @@ document.getElementById("calcBtn").addEventListener("click", () => {
     return;
   }
 
-  let rate;
+  // -------- Maintenance (4-2-1) --------
+  let maintenance;
+  if (weight <= 10) maintenance = weight * 4;
+  else if (weight <= 20) maintenance = 40 + (weight - 10) * 2;
+  else maintenance = 60 + (weight - 20) * 1;
+
+  // -------- Deficit --------
+  const totalDeficit = maintenance * npo;
+
+  // -------- Third space (Liberal) --------
+  let thirdRate;
   switch (severity) {
-    case "minimal": rate = 2; break;
-    case "mild": rate = 4; break;
-    case "moderate": rate = 6; break;
-    case "severe": rate = 8; break;
+    case "minimal": thirdRate = 2; break;
+    case "mild": thirdRate = 4; break;
+    case "moderate": thirdRate = 6; break;
+    case "severe": thirdRate = 8; break;
   }
+  const third = thirdRate * weight;
 
-  const base = rate * weight;
+  // -------- CVE (only hour 1) --------
+  const cveRate = age < 2 ? 15 : 5;
+  const cve = cveRate * weight;
 
-  const hour1 = base;
-  const hour2 = base + b1;
-  const hour3 = base + b2;
-  const hour4 = base + b3;
+  // -------- Bleeding effects --------
+  const B1 = b1 * 3;
+  const B2 = b2 * 3;
+  const B3 = b3 * 3;
+
+  // -------- LIBERAL --------
+  const lib1 = maintenance + 0.5 * totalDeficit + third + cve;
+  const lib2 = maintenance + 0.25 * totalDeficit + third + B1;
+  const lib3 = maintenance + 0.25 * totalDeficit + third + B2;
+  const lib4 = maintenance + third + B3;
+
+  // -------- RESTRICTIVE --------
+  let rRate;
+  switch (severity) {
+    case "minimal": rRate = 2; break;
+    case "mild": rRate = 4; break;
+    case "moderate": rRate = 6; break;
+    case "severe": rRate = 8; break;
+  }
+  const rBase = rRate * weight;
+
+  const r1 = rBase;
+  const r2 = rBase + b1;
+  const r3 = rBase + b2;
+  const r4 = rBase + b3;
 
   document.getElementById("results").innerHTML = `
-    <p><strong>Restrictive Strategy (ml/hour)</strong></p>
-    <p>Hour 1: ${hour1.toFixed(0)} ml</p>
-    <p>Hour 2: ${hour2.toFixed(0)} ml</p>
-    <p>Hour 3: ${hour3.toFixed(0)} ml</p>
-    <p>Hour 4: ${hour4.toFixed(0)} ml</p>
+    <h3>Restrictive (ml/h)</h3>
+    <p>H1: ${r1.toFixed(0)}</p>
+    <p>H2: ${r2.toFixed(0)}</p>
+    <p>H3: ${r3.toFixed(0)}</p>
+    <p>H4: ${r4.toFixed(0)}</p>
+
+    <hr>
+
+    <h3>Liberal (ml/h)</h3>
+    <p>H1: ${lib1.toFixed(0)}</p>
+    <p>H2: ${lib2.toFixed(0)}</p>
+    <p>H3: ${lib3.toFixed(0)}</p>
+    <p>H4: ${lib4.toFixed(0)}</p>
   `;
 });
+
+
 
