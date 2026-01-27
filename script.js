@@ -69,6 +69,17 @@ const exp2 = (r2 + lib2) / 2;
 const exp3 = (r3 + lib3) / 2;
 const exp4 = (r4 + lib4) / 2;
 
+  // -------- MABL --------
+const sex = document.getElementById("sex").value;
+const hctpatient = Number(document.getElementById("hctpatient").value);
+const hctTarget = Number(document.getElementById("hctTarget").value);
+
+let EBV;
+if (sex === "male") EBV = weight * 70;
+else EBV = weight * 65;
+
+const MABL = EBV * ((hctpatient - hctTarget) / hctStart);
+
   document.getElementById("results").innerHTML = `
     <h3>Restrictive (ml/h)</h3>
     <p>H1: ${r1.toFixed(0)}</p>
@@ -91,6 +102,7 @@ const exp4 = (r4 + lib4) / 2;
     <p>H4: ${lib4.toFixed(0)}</p>
   `;
 });
+
 
 
 
