@@ -78,7 +78,7 @@ let EBV;
 if (sex === "male") EBV = weight * 70;
 else EBV = weight * 65;
 
-const MABL = EBV * ((hctpatient - hctTarget) / hctStart);
+const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 
   document.getElementById("results").innerHTML = `
     <h3>Restrictive (ml/h)</h3>
@@ -107,6 +107,7 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctStart);
 
   `;
 });
+
 
 
 
