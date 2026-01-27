@@ -63,6 +63,12 @@ document.getElementById("calcBtn").addEventListener("click", () => {
   const r3 = rBase + b2;
   const r4 = rBase + b3;
 
+  // -------- EXPERIMENTAL --------
+const exp1 = (r1 + lib1) / 2;
+const exp2 = (r2 + lib2) / 2;
+const exp3 = (r3 + lib3) / 2;
+const exp4 = (r4 + lib4) / 2;
+
   document.getElementById("results").innerHTML = `
     <h3>Restrictive (ml/h)</h3>
     <p>H1: ${r1.toFixed(0)}</p>
@@ -72,6 +78,12 @@ document.getElementById("calcBtn").addEventListener("click", () => {
 
     <hr>
 
+    <h3>Experimental (ml/h)</h3>
+<p>H1: ${exp1.toFixed(0)}</p>
+<p>H2: ${exp2.toFixed(0)}</p>
+<p>H3: ${exp3.toFixed(0)}</p>
+<p>H4: ${exp4.toFixed(0)}</p>
+
     <h3>Liberal (ml/h)</h3>
     <p>H1: ${lib1.toFixed(0)}</p>
     <p>H2: ${lib2.toFixed(0)}</p>
@@ -79,6 +91,7 @@ document.getElementById("calcBtn").addEventListener("click", () => {
     <p>H4: ${lib4.toFixed(0)}</p>
   `;
 });
+
 
 
 
