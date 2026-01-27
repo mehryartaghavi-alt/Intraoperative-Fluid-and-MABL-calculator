@@ -100,8 +100,14 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctStart);
     <p>H2: ${lib2.toFixed(0)}</p>
     <p>H3: ${lib3.toFixed(0)}</p>
     <p>H4: ${lib4.toFixed(0)}</p>
+
+    <hr>
+<h3>MABL</h3>
+<p>${MABL.toFixed(0)} ml</p>
+
   `;
 });
+
 
 
 
