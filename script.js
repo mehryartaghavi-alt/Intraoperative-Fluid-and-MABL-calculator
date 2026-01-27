@@ -69,16 +69,37 @@ const exp2 = (r2 + lib2) / 2;
 const exp3 = (r3 + lib3) / 2;
 const exp4 = (r4 + lib4) / 2;
 
-  // -------- MABL --------
+ // -------- EBV & MABL --------
 const sex = document.getElementById("sex").value;
+const age = Number(document.getElementById("age").value) || 0;
 const hctpatient = Number(document.getElementById("hctpatient").value);
 const hctTarget = Number(document.getElementById("hctTarget").value);
 
-let EBV;
-if (sex === "male") EBV = weight * 70;
-else EBV = weight * 65;
+// تعیین ضریب EBV بر اساس سن
+let ebvFactor;
 
+if (age < 1) ebvFactor = 90;
+else if (age >= 1 && age < 2) ebvFactor = 80;
+else if (age >= 2 && age <= 10) ebvFactor = 70;
+else ebvFactor = 60;
+
+// محاسبه EBV پایه (برای آقایان)
+let EBV = weight * ebvFactor;
+
+// اگر خانم بود
+if (sex === "female") {
+  EBV = EBV * 0.85;
+}
+
+// کنترل منطقی
+if (hctTarget >= hctpatient) {
+  alert("Target Hct must be lower than patient Hct");
+  return;
+}
+
+// فرمول نهایی MABL
 const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
+
 
   document.getElementById("results").innerHTML = `
     <h3>Restrictive (ml/h)</h3>
@@ -103,10 +124,13 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 
     <hr>
 <h3>MABL</h3>
-<p>${MABL.toFixed(0)} ml</p>
+<p>EBV: ${EBV.toFixed(0)} ml</p>
+<p>Maximum Allowable Blood Loss: ${MABL.toFixed(0)} ml</p>
+
 
   `;
 });
+
 
 
 
