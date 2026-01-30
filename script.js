@@ -1,3 +1,4 @@
+alert("SCRIPT IS RUNNING");
 document.getElementById("calcBtn").addEventListener("click", () => {
   const weight = Number(document.getElementById("weight").value);
   const severity = document.getElementById("severity").value;
@@ -130,6 +131,7 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 
   `;
 });
+
 
 
 
