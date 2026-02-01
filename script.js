@@ -72,7 +72,6 @@ const exp4 = (r4 + lib4) / 2;
 
  // -------- EBV & MABL --------
 const sex = document.getElementById("sex").value;
-const age = Number(document.getElementById("age").value) || 0;
 const hctpatient = Number(document.getElementById("hctpatient").value);
 const hctTarget = Number(document.getElementById("hctTarget").value);
 
@@ -131,6 +130,7 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 
   `;
 });
+
 
 
 
