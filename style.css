@@ -50,9 +50,6 @@ button {
   font-size: 1rem;
 }
 
-#results {
-  margin-top: 20px;
-}
 .result-table {
   width: 100%;
   border-collapse: collapse;
@@ -80,6 +77,10 @@ button {
 .mabl-box {
   margin-top: 16px;
   padding: 12px;
+background: #e0f2f1;
+  border-left: 6px solid #00796b;
+  font-size: 16px;
+}
 
 
 
