@@ -53,5 +53,33 @@ button {
 #results {
   margin-top: 20px;
 }
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #90a4ae;
+  padding: 8px;
+  text-align: center;
+}
+
+.result-table th {
+  background-color: #00796b;
+  color: white;
+  font-weight: 600;
+}
+
+.result-table tr:nth-child(even) {
+  background-color: #f1f8f7;
+}
+
+.mabl-box {
+  margin-top: 16px;
+  padding: 12px;
+
 
 
