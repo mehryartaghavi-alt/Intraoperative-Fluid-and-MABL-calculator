@@ -1,4 +1,4 @@
-alert("SCRIPT IS RUNNING");
+
 document.getElementById("calcBtn").addEventListener("click", () => {
   const weight = Number(document.getElementById("weight").value);
   const severity = document.getElementById("severity").value;
@@ -127,9 +127,26 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 <p>EBV: ${EBV.toFixed(0)} ml</p>
 <p>Maximum Allowable Blood Loss: ${MABL.toFixed(0)} ml</p>
 
+  document.getElementById("liberal1").innerText = liberal_h1;
+  document.getElementById("liberal2").innerText = liberal_h2;
+  document.getElementById("liberal3").innerText = liberal_h3;
+  document.getElementById("liberal4").innerText = liberal_h4;
+
+  document.getElementById("exp1").innerText = exp_h1;
+  document.getElementById("exp2").innerText = exp_h2;
+  document.getElementById("exp3").innerText = exp_h3;
+  document.getElementById("exp4").innerText = exp_h4;
+
+  document.getElementById("res1").innerText = res_h1;
+  document.getElementById("res2").innerText = res_h2;
+  document.getElementById("res3").innerText = res_h3;
+  document.getElementById("res4").innerText = res_h4;
+
+  document.getElementById("mablResult").innerText = mabl;
 
   `;
 });
+
 
 
 
