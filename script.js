@@ -100,8 +100,6 @@ if (hctTarget >= hctpatient) {
 // فرمول نهایی MABL
 const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 
-
-  document.getElementById("results").innerHTML = `
     <h3>Restrictive (ml/h)</h3>
     <p>H1: ${r1.toFixed(0)}</p>
     <p>H2: ${r2.toFixed(0)}</p>
@@ -127,25 +125,27 @@ const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
 <p>EBV: ${EBV.toFixed(0)} ml</p>
 <p>Maximum Allowable Blood Loss: ${MABL.toFixed(0)} ml</p>
 
-  document.getElementById("liberal1").innerText = liberal_h1;
-  document.getElementById("liberal2").innerText = liberal_h2;
-  document.getElementById("liberal3").innerText = liberal_h3;
-  document.getElementById("liberal4").innerText = liberal_h4;
+  // -------- Fill table --------
+document.getElementById("liberal1").innerText = lib1.toFixed(0);
+document.getElementById("liberal2").innerText = lib2.toFixed(0);
+document.getElementById("liberal3").innerText = lib3.toFixed(0);
+document.getElementById("liberal4").innerText = lib4.toFixed(0);
 
-  document.getElementById("exp1").innerText = exp_h1;
-  document.getElementById("exp2").innerText = exp_h2;
-  document.getElementById("exp3").innerText = exp_h3;
-  document.getElementById("exp4").innerText = exp_h4;
+document.getElementById("exp1").innerText = exp1.toFixed(0);
+document.getElementById("exp2").innerText = exp2.toFixed(0);
+document.getElementById("exp3").innerText = exp3.toFixed(0);
+document.getElementById("exp4").innerText = exp4.toFixed(0);
 
-  document.getElementById("res1").innerText = res_h1;
-  document.getElementById("res2").innerText = res_h2;
-  document.getElementById("res3").innerText = res_h3;
-  document.getElementById("res4").innerText = res_h4;
+document.getElementById("res1").innerText = r1.toFixed(0);
+document.getElementById("res2").innerText = r2.toFixed(0);
+document.getElementById("res3").innerText = r3.toFixed(0);
+document.getElementById("res4").innerText = r4.toFixed(0);
 
-  document.getElementById("mablResult").innerText = mabl;
+document.getElementById("mablResult").innerText = MABL.toFixed(0);
 
-  `;
+`;
 });
+
 
 
 
