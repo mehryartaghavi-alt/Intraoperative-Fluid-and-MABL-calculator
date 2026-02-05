@@ -59,7 +59,7 @@ button {
 
 .result-table th,
 .result-table td {
-  border: 1px solid #90a4ae;
+  border: 1px solid #c0c0c0;
   padding: 8px;
   text-align: center;
 }
@@ -84,6 +84,7 @@ background: #e0f2f1;
   #results {
   display: block !important;
 }
+
 
 
 
