@@ -65,9 +65,9 @@ button {
 }
 
 .result-table th {
-  background-color: #7fffd4;
-  color: white;
-  font-weight: 600;
+  background-color: #40e0d0;
+  color: black;
+  font-weight: 500;
 }
 
 .result-table tr:nth-child(even) {
@@ -84,6 +84,7 @@ background: #e0f2f1;
   #results {
   display: block !important;
 }
+
 
 
 
