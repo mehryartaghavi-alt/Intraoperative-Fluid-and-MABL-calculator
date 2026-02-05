@@ -143,7 +143,6 @@ document.getElementById("res4").innerText = r4.toFixed(0);
 
 document.getElementById("mablResult").innerText = MABL.toFixed(0);
 
-}
 
 
 
