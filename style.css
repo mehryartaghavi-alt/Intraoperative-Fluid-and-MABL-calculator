@@ -5,9 +5,9 @@ body {
 }
 
 .app {
-  max-width: 420px;
-  margin: 40px auto;
-  background: #fafad2;
+  max-width: 300px;
+  margin: 20px auto;
+  background: #deffbd;
   padding: 20px;
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -84,6 +84,7 @@ background: #e0f2f1;
   #results {
   display: block !important;
 }
+
 
 
 
