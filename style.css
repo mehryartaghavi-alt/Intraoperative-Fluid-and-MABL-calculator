@@ -77,13 +77,14 @@ button {
 .mabl-box {
   margin-top: 16px;
   padding: 12px;
-background: #ff0000;
+background: #ff617a;
   border-left: 6px solid #00796b;
   font-size: 16px;
 }
   #results {
   display: block !important;
 }
+
 
 
 
