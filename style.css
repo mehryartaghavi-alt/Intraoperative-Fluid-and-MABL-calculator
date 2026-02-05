@@ -32,11 +32,11 @@ label {
 }
 
 input, select {
-  width: 100%;
+  width: 80%;
   padding: 8px;
   margin-top: 4px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
 }
 
 button {
@@ -84,6 +84,7 @@ background: #e0f2f1;
   #results {
   display: block !important;
 }
+
 
 
 
