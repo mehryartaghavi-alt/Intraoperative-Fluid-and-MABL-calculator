@@ -1,17 +1,25 @@
+document.getElementById("calcBtn").addEventListener("click", function () {
 
-document.getElementById("calcBtn").addEventListener("click", () => {
   const weight = Number(document.getElementById("weight").value);
-  const severity = document.getElementById("severity").value;
   const age = Number(document.getElementById("age").value);
   const npo = Number(document.getElementById("npo").value);
+  const severity = document.getElementById("severity").value;
+  const sex = document.getElementById("sex").value;
 
   const b1 = Number(document.getElementById("bleed1").value) || 0;
   const b2 = Number(document.getElementById("bleed2").value) || 0;
   const b3 = Number(document.getElementById("bleed3").value) || 0;
 
-  if (!weight) {
-    document.getElementById("results").innerHTML =
-      "<p style='color:red'>Please enter weight</p>";
+  const hctPatient = Number(document.getElementById("hctpatient").value);
+  const hctTarget = Number(document.getElementById("hctTarget").value);
+
+  if (!weight || !age || !npo || !hctPatient || !hctTarget) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  if (hctTarget >= hctPatient) {
+    alert("Target Hct must be lower than Patient Hct");
     return;
   }
 
@@ -19,143 +27,70 @@ document.getElementById("calcBtn").addEventListener("click", () => {
   let maintenance;
   if (weight <= 10) maintenance = weight * 4;
   else if (weight <= 20) maintenance = 40 + (weight - 10) * 2;
-  else maintenance = 60 + (weight - 20) * 1;
+  else maintenance = 60 + (weight - 20);
 
   // -------- Deficit --------
-  const totalDeficit = maintenance * npo;
+  const deficit = maintenance * npo;
 
-  // -------- Third space (Liberal) --------
-  let thirdRate;
-  switch (severity) {
-    case "minimal": thirdRate = 2; break;
-    case "mild": thirdRate = 4; break;
-    case "moderate": thirdRate = 6; break;
-    case "severe": thirdRate = 8; break;
-  }
+  // -------- Third space --------
+  let thirdRate = 0;
+  if (severity === "minimal") thirdRate = 2;
+  if (severity === "mild") thirdRate = 4;
+  if (severity === "moderate") thirdRate = 6;
+  if (severity === "severe") thirdRate = 8;
+
   const third = thirdRate * weight;
 
-  // -------- CVE (only hour 1) --------
-  const cveRate = age < 2 ? 15 : 5;
-  const cve = cveRate * weight;
-
-  // -------- Bleeding effects --------
-  const B1 = b1 * 3;
-  const B2 = b2 * 3;
-  const B3 = b3 * 3;
+  // -------- CVE --------
+  const cve = (age < 2 ? 15 : 5) * weight;
 
   // -------- LIBERAL --------
-  const lib1 = maintenance + 0.5 * totalDeficit + third + cve;
-  const lib2 = maintenance + 0.25 * totalDeficit + third + B1;
-  const lib3 = maintenance + 0.25 * totalDeficit + third + B2;
-  const lib4 = maintenance + third + B3;
+  const lib1 = maintenance + 0.5 * deficit + third + cve;
+  const lib2 = maintenance + 0.25 * deficit + third + b1 * 3;
+  const lib3 = maintenance + 0.25 * deficit + third + b2 * 3;
+  const lib4 = maintenance + third + b3 * 3;
 
   // -------- RESTRICTIVE --------
-  let rRate;
-  switch (severity) {
-    case "minimal": rRate = 2; break;
-    case "mild": rRate = 4; break;
-    case "moderate": rRate = 6; break;
-    case "severe": rRate = 8; break;
-  }
-  const rBase = rRate * weight;
-
+  const rBase = thirdRate * weight;
   const r1 = rBase;
   const r2 = rBase + b1;
   const r3 = rBase + b2;
   const r4 = rBase + b3;
 
   // -------- EXPERIMENTAL --------
-const exp1 = (r1 + lib1) / 2;
-const exp2 = (r2 + lib2) / 2;
-const exp3 = (r3 + lib3) / 2;
-const exp4 = (r4 + lib4) / 2;
+  const exp1 = (lib1 + r1) / 2;
+  const exp2 = (lib2 + r2) / 2;
+  const exp3 = (lib3 + r3) / 2;
+  const exp4 = (lib4 + r4) / 2;
 
- // -------- EBV & MABL --------
-const sex = document.getElementById("sex").value;
-const hctpatient = Number(document.getElementById("hctpatient").value);
-const hctTarget = Number(document.getElementById("hctTarget").value);
+  // -------- EBV & MABL --------
+  let ebvFactor;
+  if (age < 1) ebvFactor = 90;
+  else if (age < 2) ebvFactor = 80;
+  else if (age <= 10) ebvFactor = 70;
+  else ebvFactor = 60;
 
-// تعیین ضریب EBV بر اساس سن
-let ebvFactor;
+  let EBV = weight * ebvFactor;
+  if (sex === "female") EBV *= 0.85;
 
-if (age < 1) ebvFactor = 90;
-else if (age >= 1 && age < 2) ebvFactor = 80;
-else if (age >= 2 && age <= 10) ebvFactor = 70;
-else ebvFactor = 60;
+  const MABL = EBV * ((hctPatient - hctTarget) / hctPatient);
 
-// محاسبه EBV پایه (برای آقایان)
-let EBV = weight * ebvFactor;
+  // -------- Fill Table --------
+  document.getElementById("liberal1").innerText = lib1.toFixed(0);
+  document.getElementById("liberal2").innerText = lib2.toFixed(0);
+  document.getElementById("liberal3").innerText = lib3.toFixed(0);
+  document.getElementById("liberal4").innerText = lib4.toFixed(0);
 
-// اگر خانم بود
-if (sex === "female") {
-  EBV = EBV * 0.85;
-}
+  document.getElementById("exp1").innerText = exp1.toFixed(0);
+  document.getElementById("exp2").innerText = exp2.toFixed(0);
+  document.getElementById("exp3").innerText = exp3.toFixed(0);
+  document.getElementById("exp4").innerText = exp4.toFixed(0);
 
-// کنترل منطقی
-if (hctTarget >= hctpatient) {
-  alert("Target Hct must be lower than patient Hct");
-  return;
-}
+  document.getElementById("res1").innerText = r1.toFixed(0);
+  document.getElementById("res2").innerText = r2.toFixed(0);
+  document.getElementById("res3").innerText = r3.toFixed(0);
+  document.getElementById("res4").innerText = r4.toFixed(0);
 
-// فرمول نهایی MABL
-const MABL = EBV * ((hctpatient - hctTarget) / hctpatient);
-
-    <h3>Restrictive (ml/h)</h3>
-    <p>H1: ${r1.toFixed(0)}</p>
-    <p>H2: ${r2.toFixed(0)}</p>
-    <p>H3: ${r3.toFixed(0)}</p>
-    <p>H4: ${r4.toFixed(0)}</p>
-
-    <hr>
-
-    <h3>Experimental (ml/h)</h3>
-<p>H1: ${exp1.toFixed(0)}</p>
-<p>H2: ${exp2.toFixed(0)}</p>
-<p>H3: ${exp3.toFixed(0)}</p>
-<p>H4: ${exp4.toFixed(0)}</p>
-
-    <h3>Liberal (ml/h)</h3>
-    <p>H1: ${lib1.toFixed(0)}</p>
-    <p>H2: ${lib2.toFixed(0)}</p>
-    <p>H3: ${lib3.toFixed(0)}</p>
-    <p>H4: ${lib4.toFixed(0)}</p>
-
-    <hr>
-<h3>MABL</h3>
-<p>EBV: ${EBV.toFixed(0)} ml</p>
-<p>Maximum Allowable Blood Loss: ${MABL.toFixed(0)} ml</p>
-
-  // -------- Fill table --------
-document.getElementById("liberal1").innerText = lib1.toFixed(0);
-document.getElementById("liberal2").innerText = lib2.toFixed(0);
-document.getElementById("liberal3").innerText = lib3.toFixed(0);
-document.getElementById("liberal4").innerText = lib4.toFixed(0);
-
-document.getElementById("exp1").innerText = exp1.toFixed(0);
-document.getElementById("exp2").innerText = exp2.toFixed(0);
-document.getElementById("exp3").innerText = exp3.toFixed(0);
-document.getElementById("exp4").innerText = exp4.toFixed(0);
-
-document.getElementById("res1").innerText = r1.toFixed(0);
-document.getElementById("res2").innerText = r2.toFixed(0);
-document.getElementById("res3").innerText = r3.toFixed(0);
-document.getElementById("res4").innerText = r4.toFixed(0);
-
-document.getElementById("mablResult").innerText = MABL.toFixed(0);
+  document.getElementById("mablResult").innerText = MABL.toFixed(0);
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
