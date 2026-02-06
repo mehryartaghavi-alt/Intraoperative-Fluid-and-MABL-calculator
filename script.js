@@ -92,5 +92,15 @@ document.getElementById("calcBtn").addEventListener("click", function () {
   document.getElementById("res4").innerText = r4.toFixed(0);
 
   document.getElementById("mablResult").innerText = MABL.toFixed(0);
+  
+// switch to results page
+document.getElementById("input-page").style.display = "none";
+document.getElementById("results-page").style.display = "block";
+
+  document.getElementById("backBtn").addEventListener("click", function () {
+  document.getElementById("results-page").style.display = "none";
+  document.getElementById("input-page").style.display = "block";
+});
 
 });
+
