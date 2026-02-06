@@ -102,6 +102,6 @@ document.getElementById("results-page").style.display = "block";
   document.getElementById("input-page").style.display = "block";
 });
 
-});
+
 
 
