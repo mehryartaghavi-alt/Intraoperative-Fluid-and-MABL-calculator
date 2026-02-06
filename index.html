@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<div id="input-page">
   <div class="app">
     <h1>Intraoperative Fluid Calculator & MABL</h1>
     <p class="subtitle">Mehryar Taghavi Gilani, MD – Anesthesiology</p>
@@ -52,7 +52,9 @@
 <input type="number" id="bleed3">
 
     <button id="calcBtn">Calculate</button>
+  </div>
 
+  <div id="results-page" style="display:none;">
     <div id="results">
     <h2>Results</h2>
 
@@ -96,6 +98,9 @@
 <div class="mabl-box">
   <strong>MABL:</strong> <span id="mablResult">–</span> ml
 </div>
+<button id="backBtn">Back</button>
+ </div>
+    
 <div class="disclaimer">
   this tool is intended for educational and clinical support purposes only.
   final clinical decisions must be made by the treating anesthesiologist.
@@ -105,6 +110,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
