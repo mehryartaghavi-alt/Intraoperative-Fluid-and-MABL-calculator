@@ -1,3 +1,5 @@
+alert("JS Loaded");
+
 document.getElementById("calcBtn").addEventListener("click", function () {
 
   const weight = Number(document.getElementById("weight").value);
@@ -102,6 +104,7 @@ document.getElementById("results-page").style.display = "block";
   document.getElementById("results-page").style.display = "none";
   document.getElementById("input-page").style.display = "block";
 });
+
 
 
 
