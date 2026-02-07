@@ -96,11 +96,13 @@ document.getElementById("calcBtn").addEventListener("click", function () {
 // switch to results page
 document.getElementById("input-page").style.display = "none";
 document.getElementById("results-page").style.display = "block";
+});
 
   document.getElementById("backBtn").addEventListener("click", function () {
   document.getElementById("results-page").style.display = "none";
   document.getElementById("input-page").style.display = "block";
 });
+
 
 
 
