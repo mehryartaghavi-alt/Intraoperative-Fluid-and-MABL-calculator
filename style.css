@@ -62,7 +62,7 @@ button:hover {
 }
 
 .result-table {
-  width: 70%;
+  width: 55%;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -86,6 +86,7 @@ button:hover {
   text-align: center;
   font-size: 16px;
 }
+
 
 
 
