@@ -67,6 +67,12 @@ button:hover {
   border-collapse: collapse;
   table-layout: fixed;   /* کلید حل مشکل */
 }
+.result-table th,
+.result-table td {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+}
 
 .result-table th {
   background: #00796b;
@@ -87,6 +93,7 @@ button:hover {
   text-align: center;
   font-size: 16px;
 }
+
 
 
 
