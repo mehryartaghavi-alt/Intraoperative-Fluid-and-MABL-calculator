@@ -4,7 +4,7 @@ document.getElementById("calcBtn").addEventListener("click", function () {
   const weight = Number(document.getElementById("weight").value);
   const age = Number(document.getElementById("age").value);
   const npo = Number(document.getElementById("npo").value);
-  const severity = document.getElementById("severity").value;
+  const grade = document.getElementById("grade").value;
   const sex = document.getElementById("sex").value;
 
   const b1 = Number(document.getElementById("bleed1").value) || 0;
@@ -35,10 +35,10 @@ document.getElementById("calcBtn").addEventListener("click", function () {
 
   // -------- Third space --------
   let thirdRate = 0;
-  if (severity === "minimal") thirdRate = 2;
-  if (severity === "mild") thirdRate = 4;
-  if (severity === "moderate") thirdRate = 6;
-  if (severity === "severe") thirdRate = 8;
+  if (grade === "minimal") thirdRate = 2;
+  if (grade === "mild") thirdRate = 4;
+  if (grade === "moderate") thirdRate = 6;
+  if (grade === "severe") thirdRate = 8;
 
   const third = thirdRate * weight;
 
@@ -103,6 +103,7 @@ document.getElementById("results-page").style.display = "block";
   document.getElementById("results-page").style.display = "none";
   document.getElementById("input-page").style.display = "block";
 });
+
 
 
 
