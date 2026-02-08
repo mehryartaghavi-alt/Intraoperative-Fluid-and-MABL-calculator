@@ -44,9 +44,9 @@ input, select {
 
 button {
   margin-top: 20px;
-  width: 100%;
+  width: 90%;
   padding: 12px;
-  background: #00796b;
+  background: #5e7ef9;
   color: white;
   border: none;
   font-size: 16px;
@@ -86,6 +86,7 @@ button:hover {
   text-align: center;
   font-size: 16px;
 }
+
 
 
 
