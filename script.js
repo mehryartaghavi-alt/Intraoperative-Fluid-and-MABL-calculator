@@ -104,6 +104,15 @@ document.getElementById("results-page").style.display = "block";
   document.getElementById("input-page").style.display = "block";
 });
 
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch((err) => console.log("SW failed", err));
+  });
+}
+
 
 
 
