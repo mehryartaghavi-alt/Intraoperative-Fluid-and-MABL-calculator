@@ -9,119 +9,123 @@
 
 <body>
   <div class="app">
-    
-<div id="input-page">
-  
-    <h1>Intraoperative Fluid Calculator & MABL</h1>
-    <p class="subtitle">Mehryar Taghavi Gilani, MD – Anesthesiology</p>
 
-    
-    <label>Age* (years)</label>
-    <input type="number" id="age" />
+    <!-- INPUT PAGE -->
+    <div id="input-page">
+      <h1>Intraoperative Fluid Calculator & MABL</h1>
+      <p class="subtitle">Mehryar Taghavi Gilani, MD – Anesthesiology</p>
 
-    <label>Sex*</label>
-    <select id="sex">
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-    
- <label>Weight* (kg)</label>
-    <input type="number" id="weight" />
-    
-    <label>NPO Time* (hours)</label>
-    <input type="number" id="npo" />
+      <label>Age* (years)</label>
+      <input type="number" id="age" />
 
-    <label>Patient Hematocrite* (%)</label>
-<input type="number" id="hctpatient" />
+      <label>Sex*</label>
+      <select id="sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
 
-<label>Target Hematocrite* (%)</label>
-<input type="number" id="hctTarget" />
+      <label>Weight* (kg)</label>
+      <input type="number" id="weight" />
 
-    <label>Surgical Grade*</label>
-    <select id="grade">
-      <option value="minimal">Minimal</option>
-      <option value="mild">Mild</option>
-      <option value="moderate">Moderate</option>
-      <option value="severe">Severe</option>
-    </select>
-<label>Blood loss hour 1 (ml)</label>
-<input type="number" id="bleed1">
+      <label>NPO Time* (hours)</label>
+      <input type="number" id="npo" />
 
-<label>Blood loss hour 2 (ml)</label>
-<input type="number" id="bleed2">
+      <label>Patient Hematocrit* (%)</label>
+      <input type="number" id="hctpatient" />
 
-<label>Blood loss hour 3 (ml)</label>
-<input type="number" id="bleed3">
+      <label>Target Hematocrit* (%)</label>
+      <input type="number" id="hctTarget" />
 
-    <button id="calcBtn">Calculate</button>
-  <div class="disclaimer">
-  Minimal: low tissue trauma, no significant fluid or blood loss such as cataract & endoscopy.
-    Mild: limited tissue injury with minimal systemic effects such as Inguinal hernia.
-    Moderate: noticeable stress response, and potential hemodynamic changes such as Laparoscopic cholecystectomy.
-   Severe: Highly invasive surgery  with significant fluid shifts or blood loss such as extensive laparatomy.
+      <label>Surgical Grade*</label>
+      <select id="grade">
+        <option value="minimal">Minimal</option>
+        <option value="mild">Mild</option>
+        <option value="moderate">Moderate</option>
+        <option value="severe">Severe</option>
+      </select>
+
+      <label>Blood loss hour 1 (ml)</label>
+      <input type="number" id="bleed1">
+
+      <label>Blood loss hour 2 (ml)</label>
+      <input type="number" id="bleed2">
+
+      <label>Blood loss hour 3 (ml)</label>
+      <input type="number" id="bleed3">
+
+      <button id="calcBtn">Calculate</button>
+      <div class="disclaimer">
+  <strong>Surgical Grade Guide:</strong><br>
+  <b>Minimal:</b> Low tissue trauma, no significant fluid or blood loss (e.g. cataract, endoscopy).<br>
+  <b>Mild:</b> Limited tissue injury with minimal systemic effects (e.g. inguinal hernia).<br>
+  <b>Moderate:</b> Noticeable stress response and possible hemodynamic changes (e.g. laparoscopic cholecystectomy).<br>
+  <b>Severe:</b> Highly invasive surgery with major fluid shifts or blood loss (e.g. extensive laparotomy).
+</div>
+
+    </div>
+
+    <!-- RESULTS PAGE -->
+    <div id="results-page">
+      <h2>Results</h2>
+
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Hour</th>
+            <th>Liberal</th>
+            <th>Normal</th>
+            <th>Restrictive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 hr</td>
+            <td id="liberal1">–</td>
+            <td id="exp1">–</td>
+            <td id="res1">–</td>
+          </tr>
+          <tr>
+            <td>2 hr</td>
+            <td id="liberal2">–</td>
+            <td id="exp2">–</td>
+            <td id="res2">–</td>
+          </tr>
+          <tr>
+            <td>3 hr</td>
+            <td id="liberal3">–</td>
+            <td id="exp3">–</td>
+            <td id="res3">–</td>
+          </tr>
+          <tr>
+            <td>4 hr</td>
+            <td id="liberal4">–</td>
+            <td id="exp4">–</td>
+            <td id="res4">–</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mabl-box">
+        <strong>MABL:</strong> <span id="mablResult">–</span> ml
+      </div>
+
+      <button id="backBtn">Back</button>
+      <div class="disclaimer">
+  This tool is intended for educational and clinical support purposes only.<br>
+  Final clinical decisions must be made by the treating anesthesiologist.<br><br>
+
+  <b>Liberal:</b> CVE + deficit + maintenance + third space + blood loss (maximum fluid strategy).<br>
+  <b>Restrictive:</b> 2–4–6–8 ml/kg/h based on surgical grade (minimal fluid strategy).<br>
+  <b>Normal:</b> Average of liberal and restrictive strategies.
+</div>
+
+    </div>
 
   </div>
 
-  <div id="results-page">
-    
-    <h2>Results</h2>
-
-<table class="result-table">
-  <thead>
-    <tr>
-      <th>Hour</th>
-      <th>Liberal</th>
-      <th>Normal</th>
-      <th>Restrict</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1 hr</td>
-      <td id="liberal1">–</td>
-      <td id="exp1">–</td>
-      <td id="res1">–</td>
-    </tr>
-    <tr>
-      <td>2 hr</td>
-      <td id="liberal2">–</td>
-      <td id="exp2">–</td>
-      <td id="res2">–</td>
-    </tr>
-    <tr>
-      <td>3 hr</td>
-      <td id="liberal3">–</td>
-      <td id="exp3">–</td>
-      <td id="res3">–</td>
-    </tr>
-    <tr>
-      <td>4 hr</td>
-      <td id="liberal4">–</td>
-      <td id="exp4">–</td>
-      <td id="res4">–</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="mabl-box">
-  <strong>MABL:</strong> <span id="mablResult">–</span> ml
-</div>
-    
-<button id="backBtn">Back</button>
-    
-    <div class="disclaimer">
-  this tool is intended for educational and clinical support purposes only.
-  final clinical decisions must be made by the treating anesthesiologist.
-    Liberal= CVE+deficit+maintanance+third loss+blood loss (maximal fluid infusion)
-    Restrict= 2-4-6-8 ml/kg for surgery grade (minimal fluid therapy)
- Normal= average fluid therapy
- </div>
-  
-</div> <!-- end of app -->
-
   <script src="script.js"></script>
 </body>
-</html>
+
 
 
 
