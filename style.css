@@ -87,6 +87,16 @@ button:hover {
   text-align: center;
   font-size: 16px;
 }
+.disclaimer {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #444;
+  background: #eef7f2;
+  padding: 12px;
+  border-radius: 10px;
+}
+
 
 
 
