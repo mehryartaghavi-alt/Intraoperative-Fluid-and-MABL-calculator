@@ -19,7 +19,7 @@
       <p class="subtitle">Mehryar Taghavi Gilani, MD – Anesthesiology</p>
 
       <label>Age* (years)</label>
-      <input type="number" id="age" />
+      <input type="number" id="age" min="0" max="120" step="0.1" placeholder="e.g.45.1" />
 
       <label>Sex*</label>
       <select id="sex">
@@ -28,16 +28,16 @@
       </select>
 
       <label>Weight* (kg)</label>
-      <input type="number" id="weight" />
+      <input type="number" id="weight" min="1" max="300" step="0.1" placeholder="e.g.72.5" />
 
       <label>NPO Time* (hours)</label>
-      <input type="number" id="npo" />
+      <input type="number" id="npo" min="0" max="20" step="1" placeholder="e.g. 8" />
 
       <label>Patient Hct* (%) or Hb* (mg/dl)</label>
-      <input type="number" id="hctpatient" />
+      <input type="number" id="hctpatient" min="0" max="60" step="0.1" placeholder="e.g.41" />
 
       <label>Target Hct* (%) or Hb* (mg/dl)</label>
-      <input type="number" id="hctTarget" />
+      <input type="number" id="hctTarget" min="0" max="40" step="0.1" placeholder="e.g.21" />
 
       <label>Surgical Grade*</label>
       <select id="grade">
@@ -48,13 +48,13 @@
       </select>
 
       <label>Blood loss hour 1 (ml)</label>
-      <input type="number" id="bleed1">
+      <input type="number" id="bleed1" min="0" max="3000" step="1" placeholder="e.g.451">
 
       <label>Blood loss hour 2 (ml)</label>
-      <input type="number" id="bleed2">
+      <input type="number" id="bleed2" min="0" max="3000" step="1" placeholder="e.g.451">
 
       <label>Blood loss hour 3 (ml)</label>
-      <input type="number" id="bleed3">
+      <input type="number" id="bleed3" min="0" max="3000" step="1" placeholder="e.g.451">
 
       <button id="calcBtn">Calculate</button>
       <div class="disclaimer">
@@ -128,6 +128,7 @@
 
   <script src="script.js"></script>
 </body>
+
 
 
 
