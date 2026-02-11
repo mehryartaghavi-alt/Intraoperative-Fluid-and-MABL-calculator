@@ -1,11 +1,10 @@
 {
   "name": "Intraoperative Fluid Calculator",
   "short_name": "FluidCalc",
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#e8f4ef",
-  "theme_color": "#0f766e",
-  "orientation": "portrait",
+  "background_color": "#eaf5ef",
+  "theme_color": "#2f7d6d",
   "icons": [
     {
       "src": "icon-192.png",
@@ -19,4 +18,3 @@
     }
   ]
 }
-
