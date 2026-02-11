@@ -112,6 +112,30 @@ if ("serviceWorker" in navigator) {
       .catch((err) => console.log("SW failed", err));
   });
 }
+function limitDecimal(el, maxInt, maxDec) {
+  let val = el.value;
+
+  // فقط عدد و نقطه
+  val = val.replace(/[^0-9.]/g, "");
+
+  // فقط یک نقطه
+  if ((val.match(/\./g) || []).length > 1) {
+    val = val.slice(0, -1);
+  }
+
+  const parts = val.split(".");
+  if (parts[0].length > maxInt) {
+    parts[0] = parts[0].slice(0, maxInt);
+  }
+
+  if (parts[1]) {
+    parts[1] = parts[1].slice(0, maxDec);
+  }
+
+  el.value = parts.join(".");
+}
+
+
 
 
 
