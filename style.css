@@ -97,6 +97,12 @@ button:hover {
   border-radius: 10px;
 }
 
+.logo {
+  width: 80px;
+  margin: 0 auto 10px;
+  display: block;
+}
+
 
 
 
