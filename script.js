@@ -119,18 +119,24 @@ function limitDecimal(el, maxInt, maxDec) {
   val = val.replace(/[^0-9.]/g, "");
 
   // فقط یک نقطه
-   const parts = val.split(".");
-  if (parts.length > 2) {
-    val= parts[0] + "." + parts[1];
+   const firstDot = val.indexOf(".");
+  if (firstDot ! == -1) {
+    val= 
+      v.slice(0, firstDot + 1) +
+      v.slice(firstDot + 1).replace(/\./g, "");
   }
-if (parts[0].length > maxInt) {
-    parts[0] = parts[0].slice(0, maxDec);
+  let [intpart, decpart] = v.split(".");
+  
+if (intpart.length > maxInt) {
+    intparts = intpart.slice(0, maxInt);
 }
-  if (parts[1] && parts[1].length > maxDec) {
-    parts[1] = parts[1].slice(0, maxDec);
-  }
+  if (decparts !== undefined) {
+    decpart = decpart.slice(0, maxDec);
+    el.value = intpart +"." +decpart;
+  } else {
 
-  el.value = parts.join(".");
+  el.value = intpart;
+}
 }
 
 
