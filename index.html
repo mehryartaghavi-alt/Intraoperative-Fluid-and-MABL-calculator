@@ -24,7 +24,7 @@
       <p class="subtitle">Mehryar Taghavi Gilani, MD – Anesthesiology</p>
 
       <label>Age* (years)</label>
-      <input type="number" id="age" step="0.1" inputmode="decimal" oninput="limitDecimal(this,3,0)" />
+      <input type="text" id="age" step="0.1" inputmode="decimal" oninput="limitDecimal(this,3,0)" />
 
       <label>Sex*</label>
       <select id="sex">
@@ -33,16 +33,16 @@
       </select>
 
       <label>Weight* (kg)</label>
-      <input type="number" id="weight" step="0.1" inputmode="decimal" oninput="limitDecimal (this,3,1)" />
+      <input type="text" id="weight" step="0.1" inputmode="decimal" oninput="limitDecimal (this,3,1)" />
 
       <label>NPO Time* (hours)</label>
-      <input type="number" id="npo"  inputmode="decimal" oninput="limitDecimal(this,2,0)" />
+      <input type="text" id="npo"  inputmode="decimal" oninput="limitDecimal(this,2,0)" />
 
       <label>Patient Hct* (%) or Hb* (g/dl)</label>
-      <input type="number" id="hctpatient" step="0.1" inputmode="decimal" oninput="limitDecimal(this,2,1)" />
+      <input type="text" id="hctpatient" step="0.1" inputmode="decimal" oninput="limitDecimal(this,2,1)" />
 
       <label>Target Hct* (%) or Hb* (g/dl)</label>
-      <input type="number" id="hctTarget" step="0.1" inputmode="decimal" oninput="limitDecimal(this,2,1)" />
+      <input type="text" id="hctTarget" step="0.1" inputmode="decimal" oninput="limitDecimal(this,2,1)" />
 
       <label>Surgical Grade*</label>
       <select id="grade">
@@ -53,13 +53,13 @@
       </select>
 
       <label>Blood loss hour 1 (ml)</label>
-<input type="number" id="bleed1" inputmode="decimal" oninput="limitDecimal(this,4,1)"/>
+<input type="text" id="bleed1" inputmode="decimal" oninput="limitDecimal(this,4,1)"/>
 
 <label>Blood loss hour 2 (ml)</label>
-<input type="number" id="bleed2" inputmode="decimal" oninput="limitDecimal(this,4,1)" />
+<input type="text" id="bleed2" inputmode="decimal" oninput="limitDecimal(this,4,1)" />
 
 <label>Blood loss hour 3 (ml)</label>
-<input type="number" id="bleed3" inputmode="decimal" oninput="limitDecimal(this,4,1)"/>
+<input type="text" id="bleed3" inputmode="decimal" oninput="limitDecimal(this,4,1)"/>
 
 <button id="calcBtn" type="button">Calculate</button>
 
@@ -134,6 +134,7 @@
 
   <script src="script.js"></script>
 </body>
+
 
 
 
