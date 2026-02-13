@@ -19,6 +19,11 @@ document.getElementById("calcBtn").addEventListener("click", function () {
     return;
   }
 
+  if (isNaN(weight) (age) (npo) (hctPatient) (hctTarget)) {
+    alert("invalid");
+    return;
+  }
+  
   if (hctTarget >= hctPatient) {
     alert("Target Hct must be lower than Patient Hct");
     return;
@@ -138,6 +143,7 @@ if (intpart.length > maxInt) {
   el.value = intpart;
 }
 }
+
 
 
 
