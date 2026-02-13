@@ -19,10 +19,17 @@ document.getElementById("calcBtn").addEventListener("click", function () {
     return;
   }
 
-  if (isNaN(weight) (age) (npo) (hctPatient) (hctTarget)) {
-    alert("invalid");
-    return;
-  }
+  if (
+  isNaN(weight) ||
+  isNaN(age) ||
+  isNaN(npo) ||
+  isNaN(hctPatient) ||
+  isNaN(hctTarget)
+) {
+  alert("Invalid numeric input");
+  return;
+}
+
   
   if (hctTarget >= hctPatient) {
     alert("Target Hct must be lower than Patient Hct");
@@ -143,6 +150,7 @@ if (intpart.length > maxInt) {
   el.value = intpart;
 }
 }
+
 
 
 
