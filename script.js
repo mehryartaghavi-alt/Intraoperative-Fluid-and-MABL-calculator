@@ -165,3 +165,4 @@ document.getElementById("backBtn").addEventListener("click", () => {
   document.getElementById("results-page").style.display = "none";
   document.getElementById("input-page").style.display = "block";
 });
+
